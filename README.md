@@ -1,24 +1,44 @@
-# README
+erDiagram
+    
+    USER {
+        integer id
+        string email
+        string name
+        string address
+    }
+    
+    ORDER {
+        integer id
+        integer user_id
+        date order_date
+        string status
+        decimal total_amount
+    }
+    
+    PRODUCT {
+        integer id
+        string name
+        text description
+        decimal price
+        integer stock_quantity
+        integer category_id
+    }
+    
+    CATEGORY {
+        integer id
+        string name
+        text description
+    }
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    ORDER_ITEM {
+        integer id
+        integer order_id
+        integer product_id
+        integer quantity
+        decimal unit_price
+    }
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+    PRODUCT ||--o{ ORDER_ITEM : "ordered in"
+    CATEGORY ||--o{ PRODUCT : has
