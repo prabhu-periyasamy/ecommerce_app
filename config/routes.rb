@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete '/users/:id' => 'users#destroy'
 
   resources :products
-  resources :categories
 
+  namespace :api do
+    resources :categories
+  end
 end
