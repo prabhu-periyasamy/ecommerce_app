@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: UserBlueprint.render(@users)
+    puts UserBlueprint.render(@users)
   end
 
   def show
