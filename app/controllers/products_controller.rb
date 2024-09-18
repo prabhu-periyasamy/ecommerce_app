@@ -22,18 +22,30 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     render json: ProductBlueprint.render(@product)
   end
+
   def edit
     # TODO : find whats the usage of this method
   end
+
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
     render json: ProductBlueprint.render(@product)
   end
+
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
     render json: ProductBlueprint.render(@product)
+  end
+
+  def offer_price
+    @product = Product.find(params[:id])
+    render json: {"offer_price": @product.price / 50}
+  end
+
+  def groceries
+    render json: {"groceries": "yet to be added"}
   end
 
   private
