@@ -22,16 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products do
-    member do
-      get 'offer_price' => 'products#offer_price'
-    end
-
-    collection do
-      get 'groceries' => 'products#groceries'
-    end
-  end
-
   namespace :api do
     resources :categories
   end
