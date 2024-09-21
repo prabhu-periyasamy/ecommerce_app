@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :categories
   end
+
+  resources :orders, :order_items
 end
