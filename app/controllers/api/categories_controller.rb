@@ -19,7 +19,6 @@ module Api
     def create
       @category = Category.new(category_params)
       @category.save
-      @category.products.create(category_params[:products])
       render json: CategoryBlueprint.render(@category)
     end
 
@@ -43,7 +42,9 @@ module Api
 
     private
     def category_params
-      params.require(:category).permit(:name, :description, :products)
+      params.require(:category)
+            .permit(:name, :description,
+                    :products_attributes => [:name, :price, :description, :stock_quantity])
     end
 
     def require_login
