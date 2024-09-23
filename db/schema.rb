@@ -22,22 +22,19 @@ ActiveRecord::Schema.define(version: 2024_09_17_141347) do
   create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity"
     t.decimal "unit_price", precision: 10
-    t.bigint "order_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "order_id"
+    t.integer "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", comment: "user table to store users", force: :cascade do |t|
     t.date "order_date"
     t.string "status"
     t.decimal "total_amount", precision: 10
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -45,10 +42,9 @@ ActiveRecord::Schema.define(version: 2024_09_17_141347) do
     t.text "description"
     t.decimal "price", precision: 10
     t.integer "stock_quantity"
-    t.bigint "category_id", null: false
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -59,8 +55,4 @@ ActiveRecord::Schema.define(version: 2024_09_17_141347) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "users"
-  add_foreign_key "products", "categories"
 end
