@@ -39,6 +39,11 @@ class OrdersController < ApplicationController
     render json: OrderBlueprint.render(@order, view: :normal)
   end
 
+  def get_user
+    @order = Order.find(params[:id])
+    render json: UserBlueprint.render(@order.user, view: :normal)
+  end
+
   private
   def product_params
     params.require(:product).permit(:name, :description, :price, :stock_quantity, :category_id)

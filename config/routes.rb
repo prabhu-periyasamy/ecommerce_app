@@ -28,5 +28,10 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :orders, :order_items
+  resources :orders do
+    member do
+      get 'get_user' => 'orders#get_user'
+    end
+  end
+  resources :order_items
 end
