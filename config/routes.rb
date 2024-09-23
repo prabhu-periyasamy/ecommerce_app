@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/health' => 'application#health'
 
-  get '/users' => 'users#index'
-  get '/users/:id' => 'users#show'
-  post '/users' => 'users#create'
-  patch '/users/:id' => 'users#update'
-  delete '/users/:id' => 'users#destroy'
+  resources :users do
+    resources :orders do
+      member do
+        get 'get_user' => 'orders#get_user'
+      end
+      resources :order_items
+    end
+  end
   
   namespace :api do
     resources :categories
@@ -28,10 +31,4 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :orders do
-    member do
-      get 'get_user' => 'orders#get_user'
-    end
-  end
-  resources :order_items
 end

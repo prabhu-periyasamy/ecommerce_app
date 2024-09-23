@@ -1,6 +1,9 @@
 module Api
   class CategoriesController < ApplicationController
 
+    # To skip CSRF token validation
+    skip_before_action :verify_authenticity_token
+
     #  filters
     before_action :require_login, except: [:index]
     around_action :exceeds_limit
@@ -14,8 +17,9 @@ module Api
     end
 
     def create
-      @category = Category.new(product_params)
+      @category = Category.new(category_params)
       @category.save
+      @category.products.create(category_params[:products])
       render json: CategoryBlueprint.render(@category)
     end
 
@@ -28,7 +32,7 @@ module Api
     end
     def update
       @category = Category.find(params[:id])
-      @category.update(product_params)
+      @category.update(category_params)
       render json: CategoryBlueprint.render(@category)
     end
     def destroy
@@ -38,8 +42,8 @@ module Api
     end
 
     private
-    def product_params
-      params.require(:category).permit(:name, :description, :price, :stock_quantity)
+    def category_params
+      params.require(:category).permit(:name, :description, :products)
     end
 
     def require_login
