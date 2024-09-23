@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    render json: ProductBlueprint.render(@products)
+    render json: ProductBlueprint.render(@products, view: :general_view)
   end
 
   def new
@@ -15,12 +15,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
-    render json: ProductBlueprint.render(@product)
+    render json: ProductBlueprint.render(@product, view: :general_view)
   end
 
   def show
     @product = Product.find(params[:id])
-    render json: ProductBlueprint.render(@product)
+    render json: ProductBlueprint.render(@product, view: :general_view)
   end
 
   def edit
@@ -30,18 +30,18 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
-    render json: ProductBlueprint.render(@product)
+    render json: ProductBlueprint.render(@product, view: :general_view)
   end
 
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    render json: ProductBlueprint.render(@product)
+    render json: ProductBlueprint.render(@product, view: :general_view)
   end
 
   def offer_price
     @product = Product.find(params[:id])
-    render json: {"offer_price": @product.price / 50}
+    render json: {"offer_price": @product.price / 50, view: :general_view}
   end
 
   def groceries
