@@ -13,7 +13,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(product_params)
+    @order = Order.new(order_params)
+    @order.user_id = params[:user_id]
     @order.save
     render json: OrderBlueprint.render(@order, view: :normal)
   end
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(product_params)
+    @order.update(order_params)
     render json: OrderBlueprint.render(@order, view: :normal)
   end
 
@@ -45,7 +46,7 @@ class OrdersController < ApplicationController
   end
 
   private
-  def product_params
-    params.require(:product).permit(:name, :description, :price, :stock_quantity, :category_id)
+  def order_params
+    params.require(:order).permit(:order_date, :status, :total_amount)
   end
 end
