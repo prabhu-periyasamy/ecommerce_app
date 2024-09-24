@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include OrderHelper
 
   # To skip CSRF token validation
   skip_before_action :verify_authenticity_token
@@ -21,19 +22,14 @@ class OrdersController < ApplicationController
     total_amount = 0
 
     @order.order_items.each do |order_item|
-      @product = Product.find(order_item.product_id)
+      validate_product = validate_product_availability(order_item)
 
-      # check if product_ids mentioned in the order_items are available - Else throw exception
-      if @product.nil?
-        render json: { error: "Product with ID #{item.product_id} not found" }, status: :not_found
+      if validate_product[:error]
+        render json: { error: validate_product[:error] }, status: validate_product[:status]
         return
       end
 
-      # check if quantity mentioned in the order_items are available in stock - Else throw exception
-      if order_item.quantity > @product.stock_quantity
-        render json: { error: "Insufficient stock for Product ID #{product.id}. Available: #{product.stock_quantity}, Requested: #{item.quantity}" }, status: :unprocessable_entity
-        return
-      end
+      @product = validate_product[:product]
 
       # Set the unit price for the order item
       order_item.unit_price = @product.price
