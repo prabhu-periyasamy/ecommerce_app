@@ -15,6 +15,10 @@ RSpec.describe OrdersController, type: :controller do
         allow_any_instance_of(OrderHelper).to receive(:validate_product_availability).and_return({ product: @product, error: nil, status: nil })
       end
       it 'returns http success' do
+        allow(controller).to receive(:set_user).and_return(true)
+        allow(controller).to receive(:validate_product_availability).and_return({ product: @product, error: nil, status: nil })
+      end
+      it 'returns http success' do
         post :create, params: { user_id: @user.id, order: @order_params }
         expect(response.status).to eq(200)
       end

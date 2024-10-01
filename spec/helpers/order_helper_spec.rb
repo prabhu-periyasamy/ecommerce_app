@@ -12,6 +12,8 @@ require 'rails_helper'
 # end
 
 RSpec.describe OrderHelper, type: :helper do
+  # let(:dummy_class) { Class.new { include OrderHelper }}
+
   describe '#validate_product_availability' do
     let(:order_item) { double('OrderItem', product_id: product_id, quantity: quantity) }
     let(:product_id) { 1 }
