@@ -43,4 +43,4 @@ yarn-debug.log*
 /coverage/
 
 # rubymine idea folders
-/.idea
+/.idea/
