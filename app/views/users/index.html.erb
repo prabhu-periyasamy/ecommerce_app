@@ -1,7 +1,5 @@
-<%= render "admin" %>
+<%= render "heading" %>
 <h1>Users List</h1>
 <% @users.each do |user| %>
-  Name: <%= user.name %><br>
-  Email: <%= user.email %><br>
-  <br>
+  <%= render partial: "user", locals: { user: user} %>
 <% end %>
