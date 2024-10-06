@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: UserBlueprint.render(@users, view: :normal)
+    # render json: UserBlueprint.render(@users, view: :normal)
   end
 
   def show
     @user = User.find(params[:id])
-    render json: UserBlueprint.render(@user, view: :normal)
+    # render json: UserBlueprint.render(@user, view: :normal)
   end
 
   def create
