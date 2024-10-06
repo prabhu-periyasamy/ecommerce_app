@@ -43,4 +43,5 @@ yarn-debug.log*
 /coverage/
 
 # rubymine idea folders
-/.idea/
+/.idea
+.idea/ecommerce_app.iml
