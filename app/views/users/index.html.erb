@@ -1,5 +1,12 @@
 <%= render "heading" %>
 <h1>Users List</h1>
-<% @users.each do |user| %>
-  <%= render partial: "user", locals: { user: user} %>
-<% end %>
+
+<!--short format for rending the collection or records-->
+<!--new-->
+<%= render partial: "user", collection: @users %>
+
+<!--old-->
+<%# @users.each do |user| %>
+  <%#= render partial: "user", locals: { user: user} %>
+<%# end %>
+<!---->
