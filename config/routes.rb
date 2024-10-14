@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
 
     collection do
+      get 'available' => 'products#available'
       get 'groceries' => 'products#groceries'
     end
   end
