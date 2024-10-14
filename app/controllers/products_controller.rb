@@ -48,6 +48,11 @@ class ProductsController < ApplicationController
     render json: {"groceries": "yet to be added"}
   end
 
+  def available
+    @products = Product.in_stock
+    render json: ProductBlueprint.render(@products, view: :general_view)
+  end
+
   private
   def product_params
     params.require(:product).permit(:name, :description, :price, :stock_quantity, :category_id)
