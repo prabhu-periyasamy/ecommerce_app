@@ -12,10 +12,6 @@ Rails.application.routes.draw do
       resources :order_items
     end
   end
-  
-  namespace :api do
-    resources :categories
-  end
 
   resources :products do
     member do
