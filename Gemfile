@@ -47,6 +47,9 @@ group :development do
   gem 'pry'
   # pry-rails >> specific for rails related features like show-routes, show-models, etc,...
   gem 'pry-rails'
+  # pry-byebug >> for stop execution of a program in middle >> debugging in pry console window
+  # https://github.com/deivid-rodriguez/pry-byebug?tab=readme-ov-file
+  gem 'pry-byebug'
 end
 
 group :test do
