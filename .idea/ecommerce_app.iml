@@ -78,6 +78,7 @@
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.3, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.10, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.14.2, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pry-byebug (v3.8.0, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry-rails (v0.3.11, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.1.1, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.8, RVM: ruby-2.6.9 [ecommerce_app]) [gem]" level="application" />
