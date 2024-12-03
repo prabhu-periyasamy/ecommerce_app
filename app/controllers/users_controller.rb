@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   # To skip CSRF token validation
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :upload_picture]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -9,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     # render json: UserBlueprint.render(@user, view: :normal)
   end
 
@@ -20,21 +20,29 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
     render json: UserBlueprint.render(@user, view: :normal)
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     render json: UserBlueprint.render(@user, view: :normal)
+  end
+
+  def upload_picture
+    picture = Picture.new(name: "#{@user.name}_pic", imageable: @user)
+    picture.save
+    render json: { picture: picture }
   end
 
   private
   # rails uses strong parameters to filter the data passed as mass attributes before saving data using model methods
   def user_params
     params.require(:user).permit(:name, :email, :address)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
   
 end
