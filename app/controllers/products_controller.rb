@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @products = Product.all
+    # Cache the JSON response for the product list
+    # Note: In memcache, we should use "GET dev_app:products_list" to get value, since dev_app is the namespace
+    # Also only raw data will be returned from the memcache server since its serialized
+    @products = Rails.cache.fetch("products_list", expires_in: 10.seconds) do
+      Product.all.to_a
+    end
     render json: ProductBlueprint.render(@products, view: :general_view)
   end
 
