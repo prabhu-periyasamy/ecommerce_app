@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Refer: https://www.writesoftwarewell.com/how-rails-concerns-work-and-how-to-use-them/
 module LogConcern extend ActiveSupport::Concern
   included do
     after_commit :log_save
