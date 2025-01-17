@@ -5,4 +5,6 @@ class Product < ApplicationRecord
   has_one :picture, as: :imageable
 
   scope :in_stock, -> { where('stock_quantity > 0') }
+
+  include LogConcern
 end
