@@ -2,6 +2,7 @@
 class HardJob
   include Sidekiq::Worker
 
+  # https://github.com/sidekiq/sidekiq/wiki/Advanced-Options
   sidekiq_options queue: 'critical'
 
   def perform(complexity)
