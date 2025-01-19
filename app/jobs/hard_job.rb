@@ -1,3 +1,4 @@
+# https://github.com/sidekiq/sidekiq/wiki/Getting-Started
 class HardJob
   include Sidekiq::Worker
 
