@@ -1,4 +1,5 @@
 class CategoryBlueprint < Blueprinter::Base
+  transform Transformers::AddCurrentDateTransformer
   identifier :id
   fields :name, :description
   # category has many products

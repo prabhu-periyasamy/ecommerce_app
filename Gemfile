@@ -69,7 +69,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # my gems
-gem 'blueprinter', '0.19.0'
+gem 'blueprinter'
 gem 'sidekiq'
 
 group :development, :test do
