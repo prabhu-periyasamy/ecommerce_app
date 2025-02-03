@@ -1,0 +1,17 @@
+<div class="form-container">
+  <%= form_with model: @user, class: "user-form" do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+    <div>
+      <%= form.label :address %>
+      <%= form.text_area :address %>
+    </div>
+    <%= form.submit %>
+  <% end %>
+</div>
