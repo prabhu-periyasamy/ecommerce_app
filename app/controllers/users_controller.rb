@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     render json: { picture: picture }
   end
 
+  def new
+    @user = User.new
+  end
+
   private
   # rails uses strong parameters to filter the data passed as mass attributes before saving data using model methods
   def user_params
