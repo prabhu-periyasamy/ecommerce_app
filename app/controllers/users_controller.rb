@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @month = (true) ? "feb" : "mar"
     # render json: UserBlueprint.render(@users, view: :normal)
   end
 
