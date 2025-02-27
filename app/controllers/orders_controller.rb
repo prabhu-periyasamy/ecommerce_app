@@ -9,7 +9,10 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    render json: OrderBlueprint.render(@orders, view: :normal)
+    # root is used to define the root key in the json response
+    # render - will give response as serialized json
+    # render_as_hash - will give response as hash which is used to manipulate the response before rendering
+    render json: OrderBlueprint.render(@orders, view: :normal, root: :orders)
   end
 
   def new
