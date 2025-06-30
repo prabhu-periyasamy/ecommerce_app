@@ -185,6 +185,8 @@ GEM
       ffi (~> 1.0)
     redis (4.8.1)
     regexp_parser (2.9.2)
+    request_store (1.5.1)
+      rack (>= 1.4)
     rexml (3.3.7)
     rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.8)
   rails-controller-testing
+  request_store
   rspec-rails
   rswag
   rswag-api

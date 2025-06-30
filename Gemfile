@@ -81,3 +81,7 @@ group :development, :test do
   gem 'rswag-ui'
   gem 'rswag-specs'
 end
+
+# https://github.com/steveklabnik/request_store
+# Thread local variable for rails
+gem "request_store"
