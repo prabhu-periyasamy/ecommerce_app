@@ -6,6 +6,6 @@ module LogConcern extend ActiveSupport::Concern
     after_commit :log_save
   end
   def log_save
-    Rails.logger.info "Model #{self.class}: #{self.id}  is saved/updated"
+    # Rails.logger.info "Model #{self.class}: #{self.id}  is saved/updated"
   end
 end

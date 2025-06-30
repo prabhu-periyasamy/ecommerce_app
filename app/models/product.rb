@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  include LogConcern
+
   belongs_to :category
   has_many :order_items
   # polymorphic association
@@ -6,5 +8,4 @@ class Product < ApplicationRecord
 
   scope :in_stock, -> { where('stock_quantity > 0') }
 
-  include LogConcern
 end
