@@ -167,6 +167,8 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
+    rails-deprecated_sanitizer (1.0.4)
+      activesupport (>= 4.2.0.alpha)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -302,6 +304,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.8)
   rails-controller-testing
+  rails-deprecated_sanitizer
   request_store
   rspec-rails
   rswag
