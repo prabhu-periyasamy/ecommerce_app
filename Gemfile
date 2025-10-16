@@ -85,5 +85,3 @@ end
 # https://github.com/steveklabnik/request_store
 # Thread local variable for rails
 gem "request_store"
-
-gem 'rails-deprecated_sanitizer'
