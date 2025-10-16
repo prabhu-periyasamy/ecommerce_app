@@ -14,4 +14,7 @@ class Order < ApplicationRecord
   has_many :products, through: :order_items
   accepts_nested_attributes_for :order_items
   include LogConcern
+
+  # This method will be called whenever the class is loaded in memory, in other way (when the class is called or accessed for the first time)
+  log_name
 end
